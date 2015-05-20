@@ -1,0 +1,14 @@
+<adapter-config name="DB_INS_OUT_ITM_CST_TBL" adapter="Database Adapter" wsdlLocation="DB_INS_OUT_ITM_CST_TBL.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/DB/APPSnonXA" UIConnectionName="Future" adapterRef=""/>
+  <endpoint-interaction portType="DB_INS_OUT_ITM_CST_TBL_ptt" operation="insert">
+    <interaction-spec className="oracle.tip.adapter.db.DBWriteInteractionSpec">
+      <property name="DescriptorName" value="DB_INS_OUT_ITM_CST_TBL.XxwfsWfsukItmCstStg"/>
+      <property name="DmlType" value="insert"/>
+      <property name="MappingsMetaDataURL" value="DB_INS_OUT_ITM_CST_TBL-or-mappings.xml"/>
+      <property name="DetectOmissions" value="true"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+  </endpoint-interaction>
+
+</adapter-config>

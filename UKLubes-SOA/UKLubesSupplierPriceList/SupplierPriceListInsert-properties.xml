@@ -1,0 +1,56 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+   <entry key="root_descriptor_alias">XXWFS_WFSUK_SUP_PRCLST_STG_TBL</entry>
+   <entry key="XXWFS_WFSUK_SUP_PRCLST_STG_TBL.CREATED_BY:db_column_not_null">false</entry>
+   <entry key="XXWFS_WFSUK_SUP_PRCLST_STG_TBL.SEQ_ID:db_column_type">NUMBER</entry>
+   <entry key="XXWFS_WFSUK_SUP_PRCLST_STG_TBL.LAST_UPDATE_DATE:db_column_type">DATE</entry>
+   <entry key="XXWFS_WFSUK_SUP_PRCLST_STG_TBL.SUPP_SITE_NAME:db_column_size">30</entry>
+   <entry key="XXWFS_WFSUK_SUP_PRCLST_STG_TBL:db_table_type">TABLE</entry>
+   <entry key="XXWFS_WFSUK_SUP_PRCLST_STG_TBL.ERROR_MESSAGE:db_column_type">VARCHAR2</entry>
+   <entry key="XXWFS_WFSUK_SUP_PRCLST_STG_TBL.SUPP_SKU_ITEM:db_column_type">VARCHAR2</entry>
+   <entry key="XXWFS_WFSUK_SUP_PRCLST_STG_TBL.CREATED_BY:db_column_type">NUMBER</entry>
+   <entry key="XXWFS_WFSUK_SUP_PRCLST_STG_TBL.CREATION_DATE:db_column_type">DATE</entry>
+   <entry key="XXWFS_WFSUK_SUP_PRCLST_STG_TBL.ERROR_MESSAGE:db_column_not_null">false</entry>
+   <entry key="XXWFS_WFSUK_SUP_PRCLST_STG_TBL.STATUS:db_column_not_null">false</entry>
+   <entry key="XXWFS_WFSUK_SUP_PRCLST_STG_TBL.STATUS:db_column_type">VARCHAR2</entry>
+   <entry key="XXWFS_WFSUK_SUP_PRCLST_STG_TBL.ERROR_MESSAGE:db_column_size">4000</entry>
+   <entry key="XXWFS_WFSUK_SUP_PRCLST_STG_TBL.REQUEST_ID:db_column_type">NUMBER</entry>
+   <entry key="XXWFS_WFSUK_SUP_PRCLST_STG_TBL.SUPP_SKU_ITEM:db_column_size">80</entry>
+   <entry key="XXWFS_WFSUK_SUP_PRCLST_STG_TBL.CREATED_BY:db_column_scale">0</entry>
+   <entry key="XXWFS_WFSUK_SUP_PRCLST_STG_TBL.REQUEST_ID:db_column_not_null">false</entry>
+   <entry key="XXWFS_WFSUK_SUP_PRCLST_STG_TBL.STATUS:db_column_size">5</entry>
+   <entry key="XXWFS_WFSUK_SUP_PRCLST_STG_TBL.SUPPLIER_NAME:db_column_not_null">false</entry>
+   <entry key="XXWFS_WFSUK_SUP_PRCLST_STG_TBL.SEQ_ID:db_column_scale">0</entry>
+   <entry key="XXWFS_WFSUK_SUP_PRCLST_STG_TBL:db_column_9">LAST_UPDATED_BY</entry>
+   <entry key="XXWFS_WFSUK_SUP_PRCLST_STG_TBL:db_column_8">CREATION_DATE</entry>
+   <entry key="XXWFS_WFSUK_SUP_PRCLST_STG_TBL:db_column_7">CREATED_BY</entry>
+   <entry key="XXWFS_WFSUK_SUP_PRCLST_STG_TBL.REQUEST_ID:db_column_scale">0</entry>
+   <entry key="XXWFS_WFSUK_SUP_PRCLST_STG_TBL:db_column_6">ERROR_MESSAGE</entry>
+   <entry key="XXWFS_WFSUK_SUP_PRCLST_STG_TBL:db_column_5">STATUS</entry>
+   <entry key="XXWFS_WFSUK_SUP_PRCLST_STG_TBL.LAST_UPDATED_BY:db_column_scale">0</entry>
+   <entry key="XXWFS_WFSUK_SUP_PRCLST_STG_TBL:db_column_4">SUPP_PRICING_LITRE</entry>
+   <entry key="XXWFS_WFSUK_SUP_PRCLST_STG_TBL.SUPP_PRICING_LITRE:db_column_type">VARCHAR2</entry>
+   <entry key="XXWFS_WFSUK_SUP_PRCLST_STG_TBL:db_column_3">SUPP_SKU_ITEM</entry>
+   <entry key="XXWFS_WFSUK_SUP_PRCLST_STG_TBL:db_column_2">SUPP_SITE_NAME</entry>
+   <entry key="XXWFS_WFSUK_SUP_PRCLST_STG_TBL.LAST_UPDATED_BY:db_column_precision">0</entry>
+   <entry key="XXWFS_WFSUK_SUP_PRCLST_STG_TBL:db_column_1">SUPPLIER_NAME</entry>
+   <entry key="XXWFS_WFSUK_SUP_PRCLST_STG_TBL.SEQ_ID:db_column_not_null">false</entry>
+   <entry key="XXWFS_WFSUK_SUP_PRCLST_STG_TBL.SUPP_SITE_NAME:db_column_not_null">false</entry>
+   <entry key="XXWFS_WFSUK_SUP_PRCLST_STG_TBL:db_column_0">SEQ_ID</entry>
+   <entry key="XXWFS_WFSUK_SUP_PRCLST_STG_TBL.REQUEST_ID:db_column_precision">0</entry>
+   <entry key="XXWFS_WFSUK_SUP_PRCLST_STG_TBL.CREATION_DATE:db_column_not_null">false</entry>
+   <entry key="XXWFS_WFSUK_SUP_PRCLST_STG_TBL.SUPPLIER_NAME:db_column_type">VARCHAR2</entry>
+   <entry key="XXWFS_WFSUK_SUP_PRCLST_STG_TBL.SUPP_PRICING_LITRE:db_column_size">30</entry>
+   <entry key="XXWFS_WFSUK_SUP_PRCLST_STG_TBL.CREATED_BY:db_column_precision">0</entry>
+   <entry key="XXWFS_WFSUK_SUP_PRCLST_STG_TBL:db_column_11">REQUEST_ID</entry>
+   <entry key="XXWFS_WFSUK_SUP_PRCLST_STG_TBL:db_column_10">LAST_UPDATE_DATE</entry>
+   <entry key="XXWFS_WFSUK_SUP_PRCLST_STG_TBL.SUPPLIER_NAME:db_column_size">100</entry>
+   <entry key="XXWFS_WFSUK_SUP_PRCLST_STG_TBL.LAST_UPDATED_BY:db_column_not_null">false</entry>
+   <entry key="XXWFS_WFSUK_SUP_PRCLST_STG_TBL.SUPP_SITE_NAME:db_column_type">VARCHAR2</entry>
+   <entry key="XXWFS_WFSUK_SUP_PRCLST_STG_TBL.SEQ_ID:db_column_precision">0</entry>
+   <entry key="XXWFS_WFSUK_SUP_PRCLST_STG_TBL.LAST_UPDATED_BY:db_column_type">NUMBER</entry>
+   <entry key="XXWFS_WFSUK_SUP_PRCLST_STG_TBL.SUPP_PRICING_LITRE:db_column_not_null">false</entry>
+   <entry key="XXWFS_WFSUK_SUP_PRCLST_STG_TBL.SUPP_SKU_ITEM:db_column_not_null">false</entry>
+   <entry key="XXWFS_WFSUK_SUP_PRCLST_STG_TBL.LAST_UPDATE_DATE:db_column_not_null">false</entry>
+</properties>

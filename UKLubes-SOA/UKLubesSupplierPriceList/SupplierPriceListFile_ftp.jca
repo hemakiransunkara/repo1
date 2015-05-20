@@ -1,0 +1,18 @@
+<adapter-config name="SupplierPriceListFile" adapter="FTP Adapter" wsdlLocation="SupplierPriceListFile.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/Ftp/FaxService" UIincludeWildcard="*.csv"/>
+  <endpoint-activation portType="Get_ptt" operation="Get">
+    <activation-spec className="oracle.tip.adapter.ftp.inbound.FTPActivationSpec">
+      <property name="DeleteFile" value="true"/>
+      <property name="MinimumAge" value="0"/>
+      <property name="PhysicalDirectory" value="/UKLubes/SupplierPriceList"/>
+      <property name="Recursive" value="false"/>
+      <property name="PollingFrequency" value="60"/>
+      <property name="FileType" value="ascii"/>
+      <property name="PhysicalArchiveDirectory" value="/UKLubes/SupplierPriceList/Archive"/>
+      <property name="IncludeFiles" value=".*\.csv"/>
+      <property name="UseHeaders" value="false"/>
+    </activation-spec>
+  </endpoint-activation>
+
+</adapter-config>

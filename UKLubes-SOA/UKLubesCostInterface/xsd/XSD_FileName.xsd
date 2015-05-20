@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:fn="http://www.filename.org"
+            targetNamespace="http://www.filename.org"
+            elementFormDefault="qualified">
+  <xsd:element name="FileName" type="fn:FileNameType">
+    <xsd:annotation>
+      <xsd:documentation>
+        A sample element
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="FileNameType">
+    <xsd:sequence>
+      <xsd:element name="FileName" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

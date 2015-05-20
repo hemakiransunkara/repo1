@@ -1,0 +1,180 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Tue Jul 01 12:48:03 IST 2014
+  Author:  10407
+  Type: BPEL 2.0 Process
+  Purpose: One Way BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="CustomerPriceListProcess"
+               targetNamespace="http://xmlns.oracle.com/UKLubes_SOA/UKLubesPriceListing/CustomerPriceListProcess"
+               xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+               xmlns:client="http://xmlns.oracle.com/UKLubes_SOA/UKLubesPriceListing/CustomerPriceListProcess"
+               xmlns:ora="http://schemas.oracle.com/xpath/extension"
+               xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:ns1="http://xmlns.oracle.com/pcbpel/adapter/ftp/UKLubes-SOA/UKLubesPriceListing/CustomerPriceListFile"
+         xmlns:ns2="http://xmlns.oracle.com/pcbpel/adapter/db/UKLubes-SOA/UKLubesPriceListing/PriceListInsert"
+         xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+         xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
+         xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
+         xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue"
+         xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath"
+         xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath"
+         xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions"
+         xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
+         xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap"
+         xmlns:ns3="http://xmlns.oracle.com/ias/pcbpel/NotificationService">
+
+  <import namespace="http://xmlns.oracle.com/UKLubes_SOA/UKLubesPriceListing/CustomerPriceListProcess" location="CustomerPriceListProcess.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      PARTNERLINKS                                                      
+      List of services participating in this BPEL process               
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  --> 
+  <partnerLinks>
+    <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+    <partnerLink name="CustomerPriceListFile" partnerLinkType="ns1:Get_plt"
+                 myRole="Get_role"/>
+    <partnerLink name="PriceListInsert"
+                 partnerLinkType="ns2:PriceListInsert_plt"
+                 partnerRole="PriceListInsert_role"/>
+    <partnerLink name="NotificationService1"
+                 partnerLinkType="ns3:NotificationServiceLink"
+                 partnerRole="NotificationServiceProvider"/>
+  </partnerLinks>
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      VARIABLES                                                        
+      List of messages and XML documents used within this BPEL process 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <variables>
+    <!-- Reference to the message passed as input during initiation -->
+    <variable name="receiveInput_Get_InputVariable" messageType="ns1:Get_msg"/>
+    <variable name="InvokeDB_insert_InputVariable"
+              messageType="ns2:XxwfsWfsukPrclistUploadTblCollection_msg"/>
+    <variable name="ExceptionVariable" type="xsd:string"/>
+    <variable name="filename" type="xsd:string"/>
+  </variables>
+  <faultHandlers>
+    <catchAll>
+      <sequence name="Sequence1">
+        <assign name="Assign_Exception">
+          <copy>
+            <from>ora:getFaultAsString()</from>
+            <to>$ExceptionVariable</to>
+          </copy>
+        </assign>
+        <scope name="Email1">
+          <bpelx:annotation>
+            <bpelx:pattern patternName="bpelx:email"/>
+            <bpelx:general>
+              <bpelx:property name="userLabel">
+                <![CDATA[Email]]>
+              </bpelx:property>
+            </bpelx:general>
+          </bpelx:annotation>
+          <variables>
+            <variable name="varNotificationReq"
+                      messageType="ns3:EmailNotificationRequest"/>
+            <variable name="varNotificationResponse"
+                      messageType="ns3:ArrayOfResponse"/>
+            <variable name="NotificationServiceFaultVariable"
+                      messageType="ns3:NotificationServiceErrorMessage"/>
+          </variables>
+          <sequence name="Sequence2">
+            <assign name="EmailParamsAssign">
+              <copy>
+                <from>string('Default')</from>
+                <to>$varNotificationReq.EmailPayload/ns3:FromAccountName</to>
+              </copy>
+              <copy>
+                <from>string('')</from>
+                <to>$varNotificationReq.EmailPayload/ns3:FromUserName</to>
+              </copy>
+              <copy>
+                <from>string('')</from>
+                <to>$varNotificationReq.EmailPayload/ns3:Bcc</to>
+              </copy>
+              <copy>
+                <from>string('')</from>
+                <to>$varNotificationReq.EmailPayload/ns3:Cc</to>
+              </copy>
+              <copy>
+                <from>string('')</from>
+                <to>$varNotificationReq.EmailPayload/ns3:ReplyToAddress</to>
+              </copy>
+              <copy>
+                <from>string('UKLubes PriceList Processing Error')</from>
+                <to>$varNotificationReq.EmailPayload/ns3:Subject</to>
+              </copy>
+              <copy>
+                <from>ora:getPreference('EmailId')</from>
+                <to>$varNotificationReq.EmailPayload/ns3:To</to>
+              </copy>
+              <copy>
+                <from>concat('&lt;br&gt;&lt;br&gt;','Processing of UKLubes file got failed!','&lt;br&gt;&lt;br&gt;','&lt;br&gt;&lt;br&gt;','Exception caught while processing file:',$filename,'&lt;br&gt;&lt;br&gt;','Please correct the following error ', ora:getFaultAsString(), '&lt;br&gt;&lt;br&gt;')</from>
+                <to>$varNotificationReq.EmailPayload/ns3:Content/ns3:ContentBody</to>
+              </copy>
+              <copy>
+                <from>string('text/html; charset=UTF-8')</from>
+                <to>$varNotificationReq.EmailPayload/ns3:Content/ns3:MimeType</to>
+              </copy>
+            </assign>
+            <invoke name="InvokeNotificationService"
+                    portType="ns3:NotificationService"
+                    partnerLink="NotificationService1"
+                    inputVariable="varNotificationReq"
+                    outputVariable="varNotificationResponse"
+                    operation="sendEmailNotification"/>
+          </sequence>
+        </scope>
+        <exit name="Exit"/>
+      </sequence>
+    </catchAll>
+  </faultHandlers>
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <sequence name="main">
+
+    <!-- Receive input from requestor. (Note: This maps to operation defined in CustomerPriceListProcess.wsdl) -->
+    <receive name="receiveInput" variable="receiveInput_Get_InputVariable" createInstance="yes"
+             partnerLink="CustomerPriceListFile" portType="ns1:Get_ptt"
+             operation="Get">
+      <bpelx:fromProperties>
+        <bpelx:fromProperty name="jca.ftp.FileName" variable="filename"/>
+      </bpelx:fromProperties>
+    </receive>
+    <assign name="TransformDB">
+      <bpelx:annotation>
+        <bpelx:pattern patternName="bpelx:transformation"/>
+      </bpelx:annotation>
+      <copy>
+        <from>ora:doXSLTransformForDoc("xsl/Transformation_File.xsl", $receiveInput_Get_InputVariable.body)</from>
+        <to variable="InvokeDB_insert_InputVariable"
+            part="XxwfsWfsukPrclistUploadTblCollection"/>
+      </copy>
+    </assign>
+    <invoke name="InvokeDB"
+            partnerLink="PriceListInsert" portType="ns2:PriceListInsert_ptt"
+            operation="insert" inputVariable="InvokeDB_insert_InputVariable"
+            bpelx:invokeAsDetail="no"/>
+  </sequence>
+</process>

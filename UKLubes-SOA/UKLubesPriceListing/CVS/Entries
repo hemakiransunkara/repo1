@@ -1,0 +1,27 @@
+/BPMD_UKLubesPriceListing_cfgplan.xml/1.1/Tue Jul  8 10:48:34 2014//
+/BPMMNAD_UKLubesPriceListing_cfgplan.xml/1.1/Tue Jul  8 10:48:35 2014//
+/BPMMNAT_UKLubesPriceListing_cfgplan.xml/1.1/Tue Jul  8 10:48:35 2014//
+/BPMPROD1_UKLubesPriceListing_cfgplan.xml/1.2/Tue Jul 15 10:50:32 2014//
+/BPMPSUP_UKLubesPriceListing_cfgplan.xml/1.1/Tue Jul  8 10:48:35 2014//
+/BPMQA1_UKLubesPriceListing_cfgplan.xml/1.1/Tue Jul  8 10:48:35 2014//
+/BPMT1_UKLubesPriceListing_cfgplan.xml/1.1/Tue Jul  8 10:48:35 2014//
+/CustomerPriceListFile.wsdl/1.2/Tue Jul 15 06:53:38 2014//
+/CustomerPriceListFile_ftp.jca/1.2/Tue Jul 15 06:53:38 2014//
+/CustomerPriceListProcess.bpel/1.2/Tue Jul 15 06:53:38 2014//
+/CustomerPriceListProcess.componentType/1.1/Tue Jul  8 10:48:35 2014//
+/CustomerPriceListProcess.wsdl/1.1/Tue Jul  8 10:48:35 2014//
+/NotificationService.wsdl/1.1/Tue Jul  8 10:48:36 2014//
+/NotificationService.xsd/1.1/Tue Jul  8 10:48:36 2014//
+/PriceListInsert-or-mappings.xml/1.2/Tue Jul 15 10:05:08 2014//
+/PriceListInsert-properties.xml/1.2/Tue Jul 15 10:05:08 2014//
+/PriceListInsert.wsdl/1.1/Tue Jul  8 10:48:36 2014//
+/PriceListInsert_db.jca/1.2/Tue Jul 15 10:05:08 2014//
+/UKLubesPriceListing.jpr/1.1/Tue Jul  8 10:48:36 2014//
+/build.properties/1.1/Fri Jul 11 16:41:48 2014//
+/build.xml/1.1/Fri Jul 11 16:41:48 2014//
+/composite.xml/1.1/Tue Jul  8 10:48:36 2014//
+/fault-bindings.xml/1.1/Fri Jul 11 16:36:14 2014//
+/fault-policies.xml/1.1/Fri Jul 11 16:36:14 2014//
+D/.designer////
+D/xsd////
+D/xsl////

@@ -1,0 +1,36 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+     name="OrderProcess"
+     targetNamespace="http://xmlns.oracle.com/UKLubes_SOA/UKLubesOrder/OrderProcess"
+     xmlns:ns2="http://www.fn.org"
+     xmlns:ns1="http://TargetNamespace.com/OrderImportFile"
+     xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype"
+     xmlns:ns3="http://www.directory.org"
+     xmlns:client="http://xmlns.oracle.com/UKLubes_SOA/UKLubesOrder/OrderProcess"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    >
+    <plnk:partnerLinkType name="OrderProcess">
+        <plnk:role name="OrderProcessProvider" portType="client:OrderProcess"/>
+    </plnk:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://TargetNamespace.com/OrderImportFile"
+             xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:client="http://xmlns.oracle.com/UKLubes_SOA/UKLubesOrder/OrderProcess"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+            <import namespace="http://TargetNamespace.com/OrderImportFile" schemaLocation="xsd/returnexample_2.xsd"/>
+        </schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://www.fn.org" schemaLocation="xsd/filename.xsd"/>
+        </xsd:schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://www.directory.org" schemaLocation="xsd/Directory.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="OrderProcessRequestMessage">
+        <wsdl:part name="payload" element="ns1:Order"/>
+    </wsdl:message>
+    <wsdl:portType name="OrderProcess">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:OrderProcessRequestMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

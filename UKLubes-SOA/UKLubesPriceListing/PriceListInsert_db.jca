@@ -1,0 +1,14 @@
+<adapter-config name="PriceListInsert" adapter="Database Adapter" wsdlLocation="PriceListInsert.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/DB/APPSnonXA" UIConnectionName="Future" adapterRef=""/>
+  <endpoint-interaction portType="PriceListInsert_ptt" operation="insert">
+    <interaction-spec className="oracle.tip.adapter.db.DBWriteInteractionSpec">
+      <property name="DescriptorName" value="PriceListInsert.XxwfsWfsukPrclistUploadTbl"/>
+      <property name="DmlType" value="insert"/>
+      <property name="MappingsMetaDataURL" value="PriceListInsert-or-mappings.xml"/>
+      <property name="DetectOmissions" value="true"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+  </endpoint-interaction>
+
+</adapter-config>

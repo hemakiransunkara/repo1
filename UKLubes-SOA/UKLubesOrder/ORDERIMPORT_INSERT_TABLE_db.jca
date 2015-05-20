@@ -1,0 +1,14 @@
+<adapter-config name="ORDERIMPORT_INSERT_TABLE" adapter="Database Adapter" wsdlLocation="ORDERIMPORT_INSERT_TABLE.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/DB/APPSnonXA" UIConnectionName="Future" adapterRef=""/>
+  <endpoint-interaction portType="ORDERIMPORT_INSERT_TABLE_ptt" operation="insert">
+    <interaction-spec className="oracle.tip.adapter.db.DBWriteInteractionSpec">
+      <property name="DescriptorName" value="ORDERIMPORT_INSERT_TABLE.XxwfsUkLandOrderImport"/>
+      <property name="DmlType" value="insert"/>
+      <property name="MappingsMetaDataURL" value="ORDERIMPORT_INSERT_TABLE-or-mappings.xml"/>
+      <property name="DetectOmissions" value="true"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+  </endpoint-interaction>
+
+</adapter-config>

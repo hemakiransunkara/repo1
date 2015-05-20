@@ -1,0 +1,76 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xs:schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/DB_INS_OUT_ITM_CST_TBL" xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/top/DB_INS_OUT_ITM_CST_TBL" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="XxwfsWfsukItmCstStgCollection" type="XxwfsWfsukItmCstStgCollection"/>
+   <xs:complexType name="XxwfsWfsukItmCstStgCollection">
+      <xs:sequence>
+         <xs:element name="XxwfsWfsukItmCstStg" type="XxwfsWfsukItmCstStg" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="XxwfsWfsukItmCstStg">
+      <xs:sequence>
+         <xs:element name="itemName" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="50"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="description" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="150"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="organizationName" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="150"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="costType" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="50"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="costElement" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="150"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="subElement" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="150"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="rateOrAmount" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="processStatus" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="240"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="requestId" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="interfaceReqId" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="creationDate" type="xs:dateTime" minOccurs="0" nillable="true"/>
+         <xs:element name="createdBy" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="lastUpdateDate" type="xs:dateTime" minOccurs="0" nillable="true"/>
+         <xs:element name="lastUpdateBy" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="soaFile" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="150"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+</xs:schema>

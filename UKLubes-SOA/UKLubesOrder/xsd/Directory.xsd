@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:di="http://www.directory.org"
+            targetNamespace="http://www.directory.org"
+            elementFormDefault="qualified">
+  <xsd:element name="DirectoryName" type="xsd:string">
+    <xsd:annotation>
+      <xsd:documentation>
+        A sample element
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+</xsd:schema>

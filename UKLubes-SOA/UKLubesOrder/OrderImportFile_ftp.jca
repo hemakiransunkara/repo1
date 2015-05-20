@@ -1,0 +1,18 @@
+<adapter-config name="OrderImportFile" adapter="FTP Adapter" wsdlLocation="OrderImportFile.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/Ftp/FaxService" UIincludeWildcard="*.txt"/>
+  <endpoint-activation portType="Get_ptt" operation="Get">
+    <activation-spec className="oracle.tip.adapter.ftp.inbound.FTPActivationSpec">
+      <property name="DeleteFile" value="true"/>
+      <property name="MinimumAge" value="0"/>
+      <property name="PhysicalDirectory" value="/UKLubes/MobilOrderImport"/>
+      <property name="Recursive" value="false"/>
+      <property name="PollingFrequency" value="60"/>
+      <property name="FileType" value="ascii"/>
+      <property name="PhysicalArchiveDirectory" value="/UKLubes/MobilOrderImport/Archive"/>
+      <property name="IncludeFiles" value=".*\.txt"/>
+      <property name="UseHeaders" value="false"/>
+    </activation-spec>
+  </endpoint-activation>
+
+</adapter-config>

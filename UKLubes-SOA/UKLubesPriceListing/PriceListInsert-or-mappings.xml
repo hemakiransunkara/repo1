@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<object-persistence xmlns="http://www.eclipse.org/eclipselink/xsds/persistence" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:eclipselink="http://www.eclipse.org/eclipselink/xsds/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="Eclipse Persistence Services - 2.1.3.v20110304-r9073">
+   <name>PriceListInsert-OR</name>
+   <class-mapping-descriptors>
+      <class-mapping-descriptor xsi:type="object-relational-class-mapping-descriptor">
+         <class>PriceListInsert.XxwfsWfsukPrclistUploadTbl</class>
+         <alias>XXWFS_WFSUK_PRCLIST_UPLOAD_TBL</alias>
+         <primary-key>
+            <field table="XXWFS_WFSUK_PRCLIST_UPLOAD_TBL" name="PRICE_LIST_NAME" xsi:type="column"/>
+         </primary-key>
+         <events/>
+         <querying>
+            <queries>
+               <query name="PriceListInsertSelect" xsi:type="read-all-query">
+                  <reference-class>PriceListInsert.XxwfsWfsukPrclistUploadTbl</reference-class>
+                  <container xsi:type="list-container-policy">
+                     <collection-type>java.util.Vector</collection-type>
+                  </container>
+               </query>
+            </queries>
+         </querying>
+         <attribute-mappings>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>priceListName</attribute-name>
+               <field table="XXWFS_WFSUK_PRCLIST_UPLOAD_TBL" name="PRICE_LIST_NAME" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>oracleItem</attribute-name>
+               <field table="XXWFS_WFSUK_PRCLIST_UPLOAD_TBL" name="ORACLE_ITEM" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>uom</attribute-name>
+               <field table="XXWFS_WFSUK_PRCLIST_UPLOAD_TBL" name="UOM" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>unitSellingPrice</attribute-name>
+               <field table="XXWFS_WFSUK_PRCLIST_UPLOAD_TBL" name="UNIT_SELLING_PRICE" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>startDate</attribute-name>
+               <field table="XXWFS_WFSUK_PRCLIST_UPLOAD_TBL" name="START_DATE" xsi:type="column"/>
+               <attribute-classification>java.sql.Timestamp</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>endDate</attribute-name>
+               <field table="XXWFS_WFSUK_PRCLIST_UPLOAD_TBL" name="END_DATE" xsi:type="column"/>
+               <attribute-classification>java.sql.Timestamp</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>processFlag</attribute-name>
+               <field table="XXWFS_WFSUK_PRCLIST_UPLOAD_TBL" name="PROCESS_FLAG" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>errorMessage</attribute-name>
+               <field table="XXWFS_WFSUK_PRCLIST_UPLOAD_TBL" name="ERROR_MESSAGE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>requestId</attribute-name>
+               <field table="XXWFS_WFSUK_PRCLIST_UPLOAD_TBL" name="REQUEST_ID" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>creationDate</attribute-name>
+               <field table="XXWFS_WFSUK_PRCLIST_UPLOAD_TBL" name="CREATION_DATE" xsi:type="column"/>
+               <attribute-classification>java.sql.Timestamp</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>createdBy</attribute-name>
+               <field table="XXWFS_WFSUK_PRCLIST_UPLOAD_TBL" name="CREATED_BY" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>lastUpdateDate</attribute-name>
+               <field table="XXWFS_WFSUK_PRCLIST_UPLOAD_TBL" name="LAST_UPDATE_DATE" xsi:type="column"/>
+               <attribute-classification>java.sql.Timestamp</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>lastUpdatedBy</attribute-name>
+               <field table="XXWFS_WFSUK_PRCLIST_UPLOAD_TBL" name="LAST_UPDATED_BY" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+         </attribute-mappings>
+         <descriptor-type>independent</descriptor-type>
+         <caching>
+            <cache-type>weak-reference</cache-type>
+            <cache-size>-1</cache-size>
+            <always-refresh>true</always-refresh>
+         </caching>
+         <remote-caching>
+            <cache-type>weak-reference</cache-type>
+            <cache-size>-1</cache-size>
+         </remote-caching>
+         <instantiation/>
+         <copying xsi:type="instantiation-copy-policy"/>
+         <tables>
+            <table name="XXWFS_WFSUK_PRCLIST_UPLOAD_TBL"/>
+         </tables>
+         <structure>structureName</structure>
+      </class-mapping-descriptor>
+   </class-mapping-descriptors>
+   <login xsi:type="database-login">
+      <platform-class>org.eclipse.persistence.platform.database.oracle.Oracle10Platform</platform-class>
+      <user-name></user-name>
+      <connection-url></connection-url>
+   </login>
+</object-persistence>

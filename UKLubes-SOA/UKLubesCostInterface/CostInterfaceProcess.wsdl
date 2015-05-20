@@ -1,0 +1,30 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+     name="CostInterfaceProcess"
+     targetNamespace="http://xmlns.oracle.com/UKLubes_SOA/UKLubesCostInterface/CostInterfaceProcess"
+     xmlns:ns2="http://www.filename.org"
+     xmlns:ns1="http://TargetNamespace.com/FTP_GET_IN_COSTINTERFACE"
+     xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype"
+     xmlns:client="http://xmlns.oracle.com/UKLubes_SOA/UKLubesCostInterface/CostInterfaceProcess"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    >
+    <plnk:partnerLinkType name="CostInterfaceProcess">
+        <plnk:role name="CostInterfaceProcessProvider" portType="client:CostInterfaceProcess"/>
+    </plnk:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://TargetNamespace.com/FTP_GET_IN_COSTINTERFACE" schemaLocation="xsd/XSD_WFSUK_Item_Cost_Load.xsd"/>
+        </schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://www.filename.org" schemaLocation="xsd/XSD_FileName.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="CostInterfaceProcessRequestMessage">
+        <wsdl:part name="payload" element="ns1:Cost"/>
+    </wsdl:message>
+    <wsdl:portType name="CostInterfaceProcess">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:CostInterfaceProcessRequestMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

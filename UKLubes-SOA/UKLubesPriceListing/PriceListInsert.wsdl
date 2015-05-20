@@ -1,0 +1,21 @@
+<?binding.jca PriceListInsert_db.jca?>
+<wsdl:definitions name="PriceListInsert" targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/UKLubes-SOA/UKLubesPriceListing/PriceListInsert" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/UKLubes-SOA/UKLubesPriceListing/PriceListInsert" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:top="http://xmlns.oracle.com/pcbpel/adapter/db/top/PriceListInsert">
+    <plt:partnerLinkType name="PriceListInsert_plt">
+        <plt:role name="PriceListInsert_role">
+            <plt:portType name="tns:PriceListInsert_ptt"/>
+        </plt:role>
+    </plt:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/PriceListInsert" schemaLocation="xsd/PriceListInsert_table.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="XxwfsWfsukPrclistUploadTblCollection_msg">
+        <wsdl:part name="XxwfsWfsukPrclistUploadTblCollection" element="top:XxwfsWfsukPrclistUploadTblCollection"/>
+    </wsdl:message>
+    <wsdl:portType name="PriceListInsert_ptt">
+        <wsdl:operation name="insert">
+            <wsdl:input message="tns:XxwfsWfsukPrclistUploadTblCollection_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

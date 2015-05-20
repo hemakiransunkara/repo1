@@ -1,0 +1,236 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Tue Jun 24 16:01:59 IST 2014
+  Author:  10407
+  Type: BPEL 2.0 Process
+  Purpose: One Way BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="OrderProcess"
+               targetNamespace="http://xmlns.oracle.com/UKLubes_SOA/UKLubesOrder/OrderProcess"
+               xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+               xmlns:client="http://xmlns.oracle.com/UKLubes_SOA/UKLubesOrder/OrderProcess"
+               xmlns:ora="http://schemas.oracle.com/xpath/extension"
+               xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:ns1="http://xmlns.oracle.com/pcbpel/adapter/ftp/UKLubes-SOA/UKLubesOrder/OrderImportFile"
+         xmlns:ns2="http://xmlns.oracle.com/pcbpel/adapter/db/UKLubes-SOA/UKLubesOrder/ORDERIMPORT_INSERT_TABLE"
+         xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:ns3="http://TargetNamespace.com/OrderImportFile"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+         xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
+         xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
+         xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue"
+         xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath"
+         xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath"
+         xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions"
+         xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
+         xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap"
+         xmlns:ns4="http://www.fn.org"
+         xmlns:ns5="http://xmlns.oracle.com/ias/pcbpel/NotificationService"
+         xmlns:ns6="http://www.directory.org">
+  <import namespace="http://www.directory.org" location="xsd/Directory.xsd"
+          importType="http://www.w3.org/2001/XMLSchema"/>
+  <import namespace="http://www.fn.org" location="xsd/filename.xsd"
+          importType="http://www.w3.org/2001/XMLSchema"/>
+  <import namespace="http://TargetNamespace.com/OrderImportFile"
+          location="xsd/returnexample_2.xsd"
+          importType="http://www.w3.org/2001/XMLSchema"/>
+  <import namespace="http://xmlns.oracle.com/UKLubes_SOA/UKLubesOrder/OrderProcess" location="OrderProcess.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      PARTNERLINKS                                                      
+      List of services participating in this BPEL process               
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  --> 
+  <partnerLinks>
+    <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+    <partnerLink name="OrderImportFile" partnerLinkType="ns1:Get_plt"
+                 myRole="Get_role"/>
+    <partnerLink name="ORDERIMPORT_INSERT_TABLE"
+                 partnerLinkType="ns2:ORDERIMPORT_INSERT_TABLE_plt"
+                 partnerRole="ORDERIMPORT_INSERT_TABLE_role"/>
+    <partnerLink name="NotificationService1"
+                 partnerLinkType="ns5:NotificationServiceLink"
+                 partnerRole="NotificationServiceProvider"/>
+  </partnerLinks>
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      VARIABLES                                                        
+      List of messages and XML documents used within this BPEL process 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <variables>
+    <!-- Reference to the message passed as input during initiation -->
+    <variable name="receiveInput_Get_InputVariable" messageType="ns1:Get_msg"/>
+    <variable name="i" type="xsd:int"/>
+    <variable name="count" type="xsd:int"/>
+    <variable name="EachVariable" element="ns3:Order"/>
+    <variable name="Invoke_InsertDB_InputVariable"
+              messageType="ns2:XxwfsUkLandOrderImportCollection_msg"/>
+    <variable name="filename" type="xsd:string"/>
+    <variable name="FN" element="ns4:FileName"/>
+    <variable name="Exception" type="xsd:string"/>
+    <variable name="DirectoryPath" type="xsd:string"/>
+  </variables>
+  <faultHandlers>
+    <catchAll>
+      <sequence name="Sequence4">
+        <assign name="Assign_Exception">
+          <copy>
+            <from>ora:getFaultAsString()</from>
+            <to>$Exception</to>
+          </copy>
+        </assign>
+        <scope name="Email1">
+          <bpelx:annotation>
+            <bpelx:pattern patternName="bpelx:email"/>
+            <bpelx:general>
+              <bpelx:property name="userLabel">
+                <![CDATA[email]]>
+              </bpelx:property>
+            </bpelx:general>
+          </bpelx:annotation>
+          <variables>
+            <variable name="varNotificationReq"
+                      messageType="ns5:EmailNotificationRequest"/>
+            <variable name="varNotificationResponse"
+                      messageType="ns5:ArrayOfResponse"/>
+            <variable name="NotificationServiceFaultVariable"
+                      messageType="ns5:NotificationServiceErrorMessage"/>
+          </variables>
+          <sequence name="Sequence5">
+            <assign name="EmailParamsAssign">
+              <copy>
+                <from>string('Default')</from>
+                <to>$varNotificationReq.EmailPayload/ns5:FromAccountName</to>
+              </copy>
+              <copy>
+                <from>string('')</from>
+                <to>$varNotificationReq.EmailPayload/ns5:FromUserName</to>
+              </copy>
+              <copy>
+                <from>string('')</from>
+                <to>$varNotificationReq.EmailPayload/ns5:Bcc</to>
+              </copy>
+              <copy>
+                <from>string('')</from>
+                <to>$varNotificationReq.EmailPayload/ns5:Cc</to>
+              </copy>
+              <copy>
+                <from>string('')</from>
+                <to>$varNotificationReq.EmailPayload/ns5:ReplyToAddress</to>
+              </copy>
+              <copy>
+                <from>string('UKLubes OrderProcessing Error')</from>
+                <to>$varNotificationReq.EmailPayload/ns5:Subject</to>
+              </copy>
+              <copy>
+                <from>ora:getPreference('EmailId')</from>
+                <to>$varNotificationReq.EmailPayload/ns5:To</to>
+              </copy>
+              <copy>
+                <from>concat('&lt;br&gt;&lt;br&gt;','Processing of UKLubes file got failed!','&lt;br&gt;&lt;br&gt;','&lt;br&gt;&lt;br&gt;','Exception caught while processing file:',$filename,'&lt;br&gt;&lt;br&gt;', 'Please correct the following error: ', ora:getFaultAsString(), '&lt;br&gt;&lt;br&gt;')</from>
+                <to>$varNotificationReq.EmailPayload/ns5:Content/ns5:ContentBody</to>
+              </copy>
+              <copy>
+                <from>string('text/html; charset=UTF-8')</from>
+                <to>$varNotificationReq.EmailPayload/ns5:Content/ns5:MimeType</to>
+              </copy>
+            </assign>
+            <invoke name="InvokeNotificationService"
+                    portType="ns5:NotificationService"
+                    partnerLink="NotificationService1"
+                    inputVariable="varNotificationReq"
+                    outputVariable="varNotificationResponse"
+                    operation="sendEmailNotification"/>
+          </sequence>
+        </scope>
+        <exit name="Exit"/>
+      </sequence>
+    </catchAll>
+  </faultHandlers>
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <sequence name="main">
+
+    <!-- Receive input from requestor. (Note: This maps to operation defined in OrderProcess.wsdl) -->
+    <receive name="receiveInput" variable="receiveInput_Get_InputVariable" createInstance="yes"
+             partnerLink="OrderImportFile" portType="ns1:Get_ptt"
+             operation="Get">
+      <bpelx:fromProperties>
+        <bpelx:fromProperty name="jca.ftp.FileName" variable="filename"/>
+        <bpelx:fromProperty name="jca.ftp.Directory" variable="DirectoryPath"/>
+      </bpelx:fromProperties>
+    </receive>
+    <assign name="Assign_Count">
+      <copy>
+        <from>1</from>
+        <to>$i</to>
+      </copy>
+      <copy>
+        <from>count($receiveInput_Get_InputVariable.body/ns3:OrderType)</from>
+        <to>$count</to>
+      </copy>
+    </assign>
+    <while name="While">
+      <condition>$i&lt;=$count</condition>
+      <sequence name="Sequence2">
+        <scope name="Scope1">
+          <sequence name="Sequence1">
+            <assign name="Assign_EachVariable">
+              <copy>
+                <from>$receiveInput_Get_InputVariable.body/ns3:OrderType[$i]</from>
+                <to>$EachVariable/ns3:OrderType</to>
+              </copy>
+              <copy>
+                <from>$filename</from>
+                <to>$FN/ns4:filename</to>
+              </copy>
+              <copy>
+                <from>$DirectoryPath</from>
+                <to>$FN/ns4:Directory_Path</to>
+              </copy>
+            </assign>
+            <assign name="Transform_DB">
+              <bpelx:annotation>
+                <bpelx:pattern patternName="bpelx:transformation"/>
+              </bpelx:annotation>
+              <copy>
+                <from>ora:doXSLTransformForDoc("xsl/Transformation_InsertDB.xsl", $EachVariable, "FN", $FN)</from>
+                <to variable="Invoke_InsertDB_InputVariable"
+                    part="XxwfsUkLandOrderImportCollection"/>
+              </copy>
+            </assign>
+            <invoke name="Invoke_InsertDB"
+                    partnerLink="ORDERIMPORT_INSERT_TABLE"
+                    portType="ns2:ORDERIMPORT_INSERT_TABLE_ptt"
+                    operation="insert"
+                    inputVariable="Invoke_InsertDB_InputVariable"
+                    bpelx:invokeAsDetail="no"/>
+          </sequence>
+        </scope>
+        <assign name="Increment">
+          <copy>
+            <from>$i+1</from>
+            <to>$i</to>
+          </copy>
+        </assign>
+      </sequence>
+    </while>
+  </sequence>
+</process>

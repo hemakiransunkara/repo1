@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faultPolicies xmlns="http://schemas.oracle.com/bpel/faultpolicy"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <faultPolicy version="2.0.1" id="RejectedMessages">
+    <Conditions>
+      <!-- All the fault conditions are defined here -->
+      <faultName xmlns:rjm="http://schemas.oracle.com/sca/rejectedmessages"
+                 name="rjm:OrderImportFile">
+        <!-- local part of fault name should be the service name-->
+        <condition>
+          <action ref="writeToFile1"/>
+          <!-- action to be taken, refer to Actions section for the details of the action -->
+        </condition>
+      </faultName>
+    </Conditions>
+    <Actions>
+      <Action id="writeToFile1">
+        <fileAction>
+          <location>/oa/output/BPMDEV/rejmsgs/UKLubes-SOA/UKLubesOrder</location>
+          <fileName>OrderImportFile%ID%.dat</fileName>
+        </fileAction>
+      </Action>
+    </Actions>
+  </faultPolicy>
+</faultPolicies>

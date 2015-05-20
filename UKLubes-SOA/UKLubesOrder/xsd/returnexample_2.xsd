@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:nxsd="http://xmlns.oracle.com/pcbpel/nxsd"
+            xmlns:tns="http://TargetNamespace.com/OrderImportFile"
+            targetNamespace="http://TargetNamespace.com/OrderImportFile"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified"
+
+            nxsd:version="NXSD"
+            nxsd:stream="chars"
+            nxsd:encoding="US-ASCII"
+            nxsd:hasHeader="true"
+            nxsd:headerLines="1"
+            nxsd:headerLinesTerminatedBy="${eol}"
+>
+
+
+  <xsd:element name="Order">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="OrderType" minOccurs="1" maxOccurs="unbounded">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="RecType" type="xsd:double" nxsd:style="terminated" nxsd:terminatedBy="\t" nxsd:quotedBy="&quot;" />
+              <xsd:element name="SiteUseID" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="\t" nxsd:quotedBy="&quot;" />
+              <xsd:element name="Custnumber" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="\t" nxsd:quotedBy="&quot;" />
+              <xsd:element name="OrderNumber" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="\t" nxsd:quotedBy="&quot;" />
+              <xsd:element name="LineNumber" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="\t" nxsd:quotedBy="&quot;" />
+              <xsd:element name="DOCCategory" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="\t" nxsd:quotedBy="&quot;" />
+              <xsd:element name="CustVat" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="\t" nxsd:quotedBy="&quot;" />
+              <xsd:element name="ContactName" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="\t" nxsd:quotedBy="&quot;" />
+              <xsd:element name="ContactNumber" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="\t" nxsd:quotedBy="&quot;" />
+              <xsd:element name="UploadPoint" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="\t" nxsd:quotedBy="&quot;" />
+              <xsd:element name="DeliveryDate" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="\t" nxsd:quotedBy="&quot;" />
+              <xsd:element name="DeliveryInstruction" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="\t" nxsd:quotedBy="&quot;" />
+              <xsd:element name="ShipInstruction" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="\t" nxsd:quotedBy="&quot;" />
+              <xsd:element name="DeliveryNumber" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="\t" nxsd:quotedBy="&quot;" />
+              <xsd:element name="PONumber" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="\t" nxsd:quotedBy="&quot;" />
+              <xsd:element name="PODate" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="\t" nxsd:quotedBy="&quot;" />
+              <xsd:element name="OrderItemNumber" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="\t" nxsd:quotedBy="&quot;" />
+              <xsd:element name="OrderQTY" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="\t" nxsd:quotedBy="&quot;" />
+              <xsd:element name="UOM" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="\t" nxsd:quotedBy="&quot;" />
+              <xsd:element name="ProdDescription" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="\t" nxsd:quotedBy="&quot;" />
+              <xsd:element name="ComodityCode" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="\t" nxsd:quotedBy="&quot;" />
+              <xsd:element name="Filler" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="\t" nxsd:quotedBy="&quot;" />
+              <xsd:element name="COAFlag" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="\t" nxsd:quotedBy="&quot;" />
+              <xsd:element name="BOL" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="\t" nxsd:quotedBy="&quot;" />
+              <xsd:element name="PickDate" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="\t" nxsd:quotedBy="&quot;" />
+              <xsd:element name="QTY" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="\t" nxsd:quotedBy="&quot;" />
+              <xsd:element name="UOM2" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="\t" nxsd:quotedBy="&quot;" />
+              <xsd:element name="BatchNumber" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="\t" nxsd:quotedBy="&quot;" />
+              <xsd:element name="ProdTemp" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="\t" nxsd:quotedBy="&quot;" />
+              <xsd:element name="ProdTempUOM" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="\t" nxsd:quotedBy="&quot;" />
+              <xsd:element name="ProdDensity" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="\t" nxsd:quotedBy="&quot;" />
+              <xsd:element name="StatusBuyBack" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="\t" nxsd:quotedBy="&quot;" />
+              <xsd:element name="BillAddr1" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="\t" nxsd:quotedBy="&quot;" />
+              <xsd:element name="BillAddr2" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="\t" nxsd:quotedBy="&quot;" />
+              <xsd:element name="BillAddr3" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="\t" nxsd:quotedBy="&quot;" />
+              <xsd:element name="Route" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="\t" nxsd:quotedBy="&quot;" />
+              <xsd:element name="ShipAddr1" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="\t" nxsd:quotedBy="&quot;" />
+              <xsd:element name="ShipAddr2" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="\t" nxsd:quotedBy="&quot;" />
+              <xsd:element name="ShipAddr3" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="\t" nxsd:quotedBy="&quot;" />
+              <xsd:element name="ShipStreet" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="\t" nxsd:quotedBy="&quot;" />
+              <xsd:element name="ShipCity" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="\t" nxsd:quotedBy="&quot;" />
+              <xsd:element name="ShipCountry" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="\t" nxsd:quotedBy="&quot;" />
+              <xsd:element name="BillStreet" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="\t" nxsd:quotedBy="&quot;" />
+              <xsd:element name="BillCity" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="\t" nxsd:quotedBy="&quot;" />
+              <xsd:element name="BillCountry" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="\t" nxsd:quotedBy="&quot;" />
+              <xsd:element name="CustDistNumber" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="\t" nxsd:quotedBy="&quot;" />
+              <xsd:element name="ShipPostal" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="\t" nxsd:quotedBy="&quot;" />
+              <xsd:element name="BillPostal" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="\t" nxsd:quotedBy="&quot;" />
+              <xsd:element name="ProdTemp2" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="\t" nxsd:quotedBy="&quot;" />
+              <xsd:element name="ProdTempUOM2" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="\t" nxsd:quotedBy="&quot;" />
+              <xsd:element name="TempRng" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="\t" nxsd:quotedBy="&quot;" />
+              <xsd:element name="TempRng2" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="\t" nxsd:quotedBy="&quot;" />
+              <xsd:element name="PartialStatus" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="\t" nxsd:quotedBy="&quot;" />
+              <xsd:element name="Filler2" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="\t" nxsd:quotedBy="&quot;" />
+              <xsd:element name="Filler3" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="\t" nxsd:quotedBy="&quot;" />
+              <xsd:element name="Filler4" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="\t" nxsd:quotedBy="&quot;" />
+              <xsd:element name="Filler5" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="\t" nxsd:quotedBy="&quot;" />
+              <xsd:element name="Filler6" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="${eol}" nxsd:quotedBy="&quot;" />
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+</xsd:schema>
+<!--NXSDWIZ:C:\Users\10407\Desktop\returnexample.csv:-->
+<!--USE-HEADER:false:-->

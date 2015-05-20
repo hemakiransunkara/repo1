@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<project name="master.soa" default="usage" basedir="./">
+   <property file="build.properties"/>
+   <target name="init">
+      <echo message="------------------------------------------------------------"/>
+      <echo message="------------------------------------------------------------"/>
+      <echo message="               Master SOA Suite Build"/>
+      <echo message="------------------------------------------------------------"/>
+      <echo message="------------------------------------------------------------"/>
+      <echo message="We are about to build: ${compositeName}"/>
+      <echo message="                                  "/>
+      <echo message="------------------------------------------------------------"/>
+      <echo message=""/>
+      <dirname property="composite.name" file="${ant.file}"/>
+   </target>
+   <target name="usage">
+      <echo message=""/>
+      <echo message="------------------------------------------------------------"/>
+      <echo message="              Master SOA Suite Build"/>
+      <echo message="------------------------------------------------------------"/>
+      <echo message=""/>
+      <echo message="              Available targets are:"/>
+      <echo message=""/>
+      <echo message="              deploy  --> compiles, packs, and deploys"/>
+      <echo message="              package --> compiles and packs"/>
+      <echo message=""/>
+      <echo message=""/>
+      <echo message=""/>
+      <echo message="Other targets are availible but the build is not designed"/>
+      <echo message="suport them directly."/>
+      <echo message=""/>
+      <echo message="You can turn up the volume on the logging of properties"/>
+      <echo message="by setting the build.debug=true flag in the build.properties."/>
+   </target>
+   <target name="dump" if="build.debug">
+      <echo message="------------------------------------------------------------"/>
+      <echo message="                       Dump Called"/>
+      <echo message="------------------------------------------------------------"/>
+      <echo message="------------------------------------------------------------"/>
+      <echo message="-----------We are building------${compositeName}------------"/>
+      <echo message="------------------------------------------------------------"/>
+      <echo message="------------------------------------------------------------"/>
+      <echoproperties/>
+      <echo message="------------------------------------------------------------"/>
+      <echo message="                       Dump End"/>
+      <echo message="------------------------------------------------------------"/>
+   </target>
+   <target name="deploy" depends="init,call.compile,call.package,call.deploy">
+      <echo message="------------------------------------------------------------"/>
+      <echo message="Calling init ------> call.packege ------> call.deploy       "/>
+      <echo message="------------------------------------------------------------"/>
+      <antcall target="dump"/>
+   </target>
+   <target name="package" depends="init,call.compile,call.package">
+      <echo message="------------------------------------------------------------"/>
+      <echo message="Calling init ------> call.compile ------> call.package       "/>
+      <echo message="------------------------------------------------------------"/>
+      <antcall target="dump"/>
+   </target>
+   <target name="call.compile" depends="init">
+      <echo message="------------------------------------------------------------"/>
+      <echo message="Compiling ${compositeName}"/>
+      <echo message="------------------------------------------------------------"/>
+      <antcall target="dump"/>
+      <ant antfile="${ant-sca-compile.build.file}" dir="${oracle.scac.script.home}"/>
+   </target>
+   <target name="copy.configplan" depends="init">
+      <echo message="------------------------------------------------------------"/>
+      <echo message="Copying ${deployment.target.hostname}_${compositeName}_cfgplan.xml to soaconfigplan.xml"/>
+      <echo message="------------------------------------------------------------"/>
+      <copy file="${deployment.target.hostname}_${compositeName}_cfgplan.xml" tofile="soaconfigplan.xml"/>
+   </target>
+   <target name="call.package" depends="init,copy.configplan">
+      <echo message="------------------------------------------------------------"/>
+      <echo message="Packaging ${compositeName} "/>
+      <echo message="------------------------------------------------------------"/>
+      <antcall target="dump"/>
+      <ant antfile="${ant-sca-package.build.file}" dir="${oracle.scac.script.home}"/>
+   </target>
+   <target name="call.deploy" depends="init">
+      <echo message="------------------------------------------------------------"/>
+      <echo message="------------------------------------------------------------"/>
+      <echo message="     Deploying ${compositeName} "/>
+      <echo message="     JAR to be deployed: ${sarLocation}"/>
+      <echo message="     Deploying to server ${serverURL} "/>
+      <echo message="     Username: ${user} "/>
+      <echo message="------------------------------------------------------------"/>
+      <echo message="------------------------------------------------------------"/>
+      <antcall target="dump"/>
+      <ant antfile="${ant-sca-deploy.build.file}" dir="${oracle.scac.script.home}"/>
+   </target>
+   <target name="call.test" depends="init">
+      <echo message="------------------------------------------------------------"/>
+      <echo message="Calling Test"/>
+      <echo message="------------------------------------------------------------"/>
+      <antcall target="dump"/>
+      <ant antfile="${ant-sca-test.build.file}" dir="${oracle.scac.script.home}"/>
+   </target>
+</project>

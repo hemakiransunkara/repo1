@@ -1,0 +1,184 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Thu Jul 10 20:31:07 IST 2014
+  Author:  10407
+  Type: BPEL 2.0 Process
+  Purpose: One Way BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="CostInterfaceProcess"
+               targetNamespace="http://xmlns.oracle.com/UKLubes_SOA/UKLubesCostInterface/CostInterfaceProcess"
+               xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+               xmlns:client="http://xmlns.oracle.com/UKLubes_SOA/UKLubesCostInterface/CostInterfaceProcess"
+               xmlns:ora="http://schemas.oracle.com/xpath/extension"
+               xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:ns1="http://xmlns.oracle.com/pcbpel/adapter/ftp/UKLubes-SOA/UKLubesCostInterface/FTP_GET_IN_COSTINTERFACE"
+         xmlns:ns2="http://xmlns.oracle.com/pcbpel/adapter/db/UKLubes-SOA/UKLubesCostInterface/DB_INS_OUT_ITM_CST_TBL"
+         xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+         xmlns:ns3="http://www.filename.org"
+         xmlns:ns4="http://xmlns.oracle.com/ias/pcbpel/NotificationService"
+         xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
+         xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
+         xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue"
+         xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath"
+         xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath"
+         xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions"
+         xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
+         xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap">
+  <import namespace="http://www.filename.org" location="xsd/XSD_FileName.xsd"
+          importType="http://www.w3.org/2001/XMLSchema"/>
+  <import namespace="http://xmlns.oracle.com/UKLubes_SOA/UKLubesCostInterface/CostInterfaceProcess" location="CostInterfaceProcess.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      PARTNERLINKS                                                      
+      List of services participating in this BPEL process               
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  --> 
+  <partnerLinks>
+    <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+    <partnerLink name="DB_INS_OUT_ITM_CST_TBL"
+                 partnerLinkType="ns2:DB_INS_OUT_ITM_CST_TBL_plt"
+                 partnerRole="DB_INS_OUT_ITM_CST_TBL_role"/>
+    <partnerLink name="NotificationService1"
+                 partnerLinkType="ns4:NotificationServiceLink"
+                 partnerRole="NotificationServiceProvider"/>
+    <partnerLink name="FTP_GET_IN_COSTINTERFACE1" partnerLinkType="ns1:Get_plt"
+                 myRole="Get_role"/>
+  </partnerLinks>
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      VARIABLES                                                        
+      List of messages and XML documents used within this BPEL process 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <variables>
+    <!-- Reference to the message passed as input during initiation -->
+    <variable name="inputVariable" messageType="client:CostInterfaceProcessRequestMessage"/>
+    <variable name="Invoke_DB_INS_OUT_ITM_CST_TBL_insert_InputVariable"
+              messageType="ns2:XxwfsWfsukItmCstStgCollection_msg"/>
+    <variable name="filename" type="xsd:string"/>
+    <variable name="FN" element="ns3:FileName"/>
+    <variable name="receiveInput_Get_InputVariable" messageType="ns1:Get_msg"/>
+  </variables>
+  <faultHandlers>
+    <catchAll>
+      <sequence name="Sequence2">
+        <scope name="Email1">
+          <bpelx:annotation>
+            <bpelx:pattern patternName="bpelx:email"/>
+            <bpelx:general>
+              <bpelx:property name="userLabel">
+                <![CDATA[email]]>
+              </bpelx:property>
+            </bpelx:general>
+          </bpelx:annotation>
+          <variables>
+            <variable name="varNotificationReq"
+                      messageType="ns4:EmailNotificationRequest"/>
+            <variable name="varNotificationResponse"
+                      messageType="ns4:ArrayOfResponse"/>
+            <variable name="NotificationServiceFaultVariable"
+                      messageType="ns4:NotificationServiceErrorMessage"/>
+          </variables>
+          <sequence name="Sequence1">
+            <assign name="EmailParamsAssign">
+              <copy>
+                <from>string('Default')</from>
+                <to>$varNotificationReq.EmailPayload/ns4:FromAccountName</to>
+              </copy>
+              <copy>
+                <from>string('')</from>
+                <to>$varNotificationReq.EmailPayload/ns4:FromUserName</to>
+              </copy>
+              <copy>
+                <from>string('')</from>
+                <to>$varNotificationReq.EmailPayload/ns4:Bcc</to>
+              </copy>
+              <copy>
+                <from>string('')</from>
+                <to>$varNotificationReq.EmailPayload/ns4:Cc</to>
+              </copy>
+              <copy>
+                <from>string('')</from>
+                <to>$varNotificationReq.EmailPayload/ns4:ReplyToAddress</to>
+              </copy>
+              <copy>
+                <from>string('UKLubes Cost Interface Error')</from>
+                <to>$varNotificationReq.EmailPayload/ns4:Subject</to>
+              </copy>
+              <copy>
+                <from>ora:getPreference('EmailId')</from>
+                <to>$varNotificationReq.EmailPayload/ns4:To</to>
+              </copy>
+              <copy>
+                <from>concat('&lt;br&gt;&lt;br&gt;','Processing of UKLubes file got failed!','&lt;br&gt;&lt;br&gt;','&lt;br&gt;&lt;br&gt;','Exception caught while processing file:',$filename,'&lt;br&gt;&lt;br&gt;','Please correct the following error ', ora:getFaultAsString(), '&lt;br&gt;&lt;br&gt;')</from>
+                <to>$varNotificationReq.EmailPayload/ns4:Content/ns4:ContentBody</to>
+              </copy>
+              <copy>
+                <from>string('text/html; charset=UTF-8')</from>
+                <to>$varNotificationReq.EmailPayload/ns4:Content/ns4:MimeType</to>
+              </copy>
+            </assign>
+            <invoke name="InvokeNotificationService"
+                    portType="ns4:NotificationService"
+                    partnerLink="NotificationService1"
+                    inputVariable="varNotificationReq"
+                    outputVariable="varNotificationResponse"
+                    operation="sendEmailNotification"/>
+          </sequence>
+        </scope>
+        <exit name="Exit"/>
+      </sequence>
+    </catchAll>
+  </faultHandlers>
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <sequence name="main">
+
+    <!-- Receive input from requestor. (Note: This maps to operation defined in CostInterfaceProcess.wsdl) -->
+    <receive name="receiveInput" variable="receiveInput_Get_InputVariable" createInstance="yes"
+             partnerLink="FTP_GET_IN_COSTINTERFACE1" portType="ns1:Get_ptt"
+             operation="Get">
+      <bpelx:fromProperties>
+        <bpelx:fromProperty name="jca.ftp.FileName" variable="filename"/>
+      </bpelx:fromProperties>
+    </receive>
+    <assign name="Assign">
+      <copy>
+        <from>$filename</from>
+        <to>$FN/ns3:FileName</to>
+      </copy>
+    </assign>
+    <assign name="Transform_ItemCost_To_DB_ITM_CST_TBL">
+      <bpelx:annotation>
+        <bpelx:pattern patternName="bpelx:transformation"/>
+      </bpelx:annotation>
+      <copy>
+        <from>ora:doXSLTransformForDoc("xsl/Map_ItemCost_To_DB_ITM_CST_TBL.xsl", $receiveInput_Get_InputVariable.body, "FN", $FN)</from>
+        <to variable="Invoke_DB_INS_OUT_ITM_CST_TBL_insert_InputVariable"
+            part="XxwfsWfsukItmCstStgCollection"/>
+      </copy>
+    </assign>
+    <invoke name="Invoke_DB_INS_OUT_ITM_CST_TBL"
+            partnerLink="DB_INS_OUT_ITM_CST_TBL"
+            portType="ns2:DB_INS_OUT_ITM_CST_TBL_ptt" operation="insert"
+            inputVariable="Invoke_DB_INS_OUT_ITM_CST_TBL_insert_InputVariable"
+            bpelx:invokeAsDetail="no"/>
+  </sequence>
+</process>

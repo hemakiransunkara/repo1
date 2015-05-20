@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<object-persistence xmlns="http://www.eclipse.org/eclipselink/xsds/persistence" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:eclipselink="http://www.eclipse.org/eclipselink/xsds/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="Eclipse Persistence Services - 2.1.3.v20110304-r9073">
+   <name>ORDERIMPORT_INSERT_TABLE-OR</name>
+   <class-mapping-descriptors>
+      <class-mapping-descriptor xsi:type="object-relational-class-mapping-descriptor">
+         <class>ORDERIMPORT_INSERT_TABLE.XxwfsUkLandOrderImport</class>
+         <alias>XXWFS_UK_LAND_ORDER_IMPORT</alias>
+         <primary-key>
+            <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="RECORD_TYPE" xsi:type="column"/>
+         </primary-key>
+         <events/>
+         <querying>
+            <queries>
+               <query name="ORDERIMPORT_INSERT_TABLESelect" xsi:type="read-all-query">
+                  <reference-class>ORDERIMPORT_INSERT_TABLE.XxwfsUkLandOrderImport</reference-class>
+                  <container xsi:type="list-container-policy">
+                     <collection-type>java.util.Vector</collection-type>
+                  </container>
+               </query>
+            </queries>
+         </querying>
+         <attribute-mappings>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>wfsRecordId</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="WFS_RECORD_ID" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>loadSource</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="LOAD_SOURCE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>fileName</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="FILE_NAME" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>processStatus</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="PROCESS_STATUS" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>errorMessage</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="ERROR_MESSAGE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>recordType</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="RECORD_TYPE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>extSiteUseId</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="EXT_SITE_USE_ID" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>extCustNumber</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="EXT_CUST_NUMBER" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>extOrderNumber</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="EXT_ORDER_NUMBER" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>extLineNumber</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="EXT_LINE_NUMBER" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>documentCategory</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="DOCUMENT_CATEGORY" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>custVatRegNum</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="CUST_VAT_REG_NUM" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>custContactName</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="CUST_CONTACT_NAME" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>custContactNumber</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="CUST_CONTACT_NUMBER" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>uploadingPoint</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="UPLOADING_POINT" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>deliveryDate</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="DELIVERY_DATE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>deliveryInstructions</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="DELIVERY_INSTRUCTIONS" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>shippingInstructions</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="SHIPPING_INSTRUCTIONS" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>deliveryNumber</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="DELIVERY_NUMBER" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>extPoNumber</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="EXT_PO_NUMBER" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>extPoDate</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="EXT_PO_DATE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>itemNumber</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="ITEM_NUMBER" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>quantity</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="QUANTITY" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>uomCode</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="UOM_CODE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>itemDescription</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="ITEM_DESCRIPTION" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>itemComodityCode</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="ITEM_COMODITY_CODE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>coaFlag</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="COA_FLAG" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>bolNumber</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="BOL_NUMBER" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>pickedDate</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="PICKED_DATE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>pickedQuantity</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="PICKED_QUANTITY" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>pickedUom</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="PICKED_UOM" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>pickedBatch</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="PICKED_BATCH" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>itemTemperature</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="ITEM_TEMPERATURE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>itemTemperatureUom</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="ITEM_TEMPERATURE_UOM" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>itemDensity</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="ITEM_DENSITY" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>buybackStatus</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="BUYBACK_STATUS" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>route</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="ROUTE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>shipToAddr1</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="SHIP_TO_ADDR1" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>shipToAddr2</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="SHIP_TO_ADDR2" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>shipToAddr3</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="SHIP_TO_ADDR3" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>shipToStreet</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="SHIP_TO_STREET" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>shipToCity</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="SHIP_TO_CITY" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>shipToCountry</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="SHIP_TO_COUNTRY" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>shipToPostalCode</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="SHIP_TO_POSTAL_CODE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>billToAddr1</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="BILL_TO_ADDR1" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>billToAddr2</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="BILL_TO_ADDR2" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>billToAddr3</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="BILL_TO_ADDR3" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>billToStreet</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="BILL_TO_STREET" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>billToCity</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="BILL_TO_CITY" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>billToCountry</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="BILL_TO_COUNTRY" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>billToPostalCode</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="BILL_TO_POSTAL_CODE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>custDistrNumber</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="CUST_DISTR_NUMBER" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>prodTemperature</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="PROD_TEMPERATURE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>prodTemperatureUom</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="PROD_TEMPERATURE_UOM" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>prodTemperatureLow</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="PROD_TEMPERATURE_LOW" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>prodTemperatureHigh</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="PROD_TEMPERATURE_HIGH" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>deliveryStatus</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="DELIVERY_STATUS" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>filler1</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="FILLER1" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>filler2</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="FILLER2" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>filler3</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="FILLER3" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>filler4</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="FILLER4" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>filler5</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="FILLER5" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>filler6</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="FILLER6" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>wfsOrderNumber</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="WFS_ORDER_NUMBER" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>wfsCompanyNumber</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="WFS_COMPANY_NUMBER" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>wfsOrgId</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="WFS_ORG_ID" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>requestId</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="REQUEST_ID" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>programId</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="PROGRAM_ID" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>programApplicationId</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="PROGRAM_APPLICATION_ID" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>creationDate</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="CREATION_DATE" xsi:type="column"/>
+               <attribute-classification>java.sql.Timestamp</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>createdBy</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="CREATED_BY" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>lastUpdateDate</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="LAST_UPDATE_DATE" xsi:type="column"/>
+               <attribute-classification>java.sql.Timestamp</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>lastUpdatedBy</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="LAST_UPDATED_BY" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>lastUpdateLogin</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="LAST_UPDATE_LOGIN" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>lastUpdateRequestId</attribute-name>
+               <field table="XXWFS_UK_LAND_ORDER_IMPORT" name="LAST_UPDATE_REQUEST_ID" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+         </attribute-mappings>
+         <descriptor-type>independent</descriptor-type>
+         <caching>
+            <cache-type>weak-reference</cache-type>
+            <cache-size>-1</cache-size>
+            <always-refresh>true</always-refresh>
+         </caching>
+         <remote-caching>
+            <cache-type>weak-reference</cache-type>
+            <cache-size>-1</cache-size>
+         </remote-caching>
+         <instantiation/>
+         <copying xsi:type="instantiation-copy-policy"/>
+         <tables>
+            <table name="XXWFS_UK_LAND_ORDER_IMPORT"/>
+         </tables>
+         <structure>structureName</structure>
+      </class-mapping-descriptor>
+   </class-mapping-descriptors>
+   <login xsi:type="database-login">
+      <platform-class>org.eclipse.persistence.platform.database.oracle.Oracle10Platform</platform-class>
+      <user-name></user-name>
+      <connection-url></connection-url>
+   </login>
+</object-persistence>
